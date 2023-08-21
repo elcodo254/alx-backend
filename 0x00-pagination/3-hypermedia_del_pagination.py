@@ -56,10 +56,11 @@ class Server:
         indexed_dataset = self.indexed_dataset()
         indexed_page = {}
 
-        while (len(indexed_page) < page_size and index < len(self.dataset())):
-            if index in indexed_dataset:
-                indexed_page[index] = indexed_dataset[index]
-            index += 1
+        i = index
+        while (len(indexed_page) < page_size and i < len(self.dataset())):
+            if i in indexed_dataset:
+                indexed_page[i] = indexed_dataset[i]
+            i += 1
         page = list(indexed_page.values())
         page_indices = indexed_page.keys()
         return {
