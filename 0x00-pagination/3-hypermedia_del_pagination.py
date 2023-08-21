@@ -59,7 +59,7 @@ class Server:
         while (len(indexed_page) < page_size and index < len(self.dataset())):
             if index in indexed_dataset:
                 indexed_page[index] = indexed_dataset[index]
-                index += 1
+            index += 1
         page = list(indexed_page.values())
         page_indices = indexed_page.keys()
         return {
