@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-LIFO caching system
+LRU caching system
 """
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LIFOCache(BaseCaching):
+class LRUCache(BaseCaching):
     """
-    A lifo caching system.
+    A lru caching system.
     Attributes:
       __init__ - initializes class instance
       put - method that adds a key/value pair to cache
@@ -26,15 +26,17 @@ class LIFOCache(BaseCaching):
         """
         assign to self.cache_data the item value for the key key.
         if number of items in cache is higher that BaseCaching.MAX_ITEMS:
-          discard the last item put in cache(LIFO)
+          discard the least recently used item put in cache(LRU)
           print DISCARD with the discarded key
         """
         if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.keys:
                 self.keys.append(key)
+            else:
+                self.keys.append(self.keys.pop(self.keys.index(key)))
             if len(self.keys) > BaseCaching.MAX_ITEMS:
-                discard = self.keys.pop(-2)
+                discard = self.keys.pop(0)
                 del self.cache_data[discard]
                 print(f'DISCARD: {discard}')
 
