@@ -45,4 +45,5 @@ class LRUCache(BaseCaching):
         Returns value in 'key' of cache
         """
         if key is not None and key in self.cache_data:
+            self.keys.append(self.keys.pop(self.keys.index(key)))
             return self.cache_data[key]
