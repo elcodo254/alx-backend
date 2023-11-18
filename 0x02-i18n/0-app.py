@@ -6,7 +6,7 @@ Route module for Basic flask app
 from flask import Flask, request, render_template
 from os import getenv
 
-app = Flask(__name__. static_url_path='')
+app = Flask(__name__, static_url_path='')
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
