@@ -5,6 +5,8 @@
 from flask import Flask, request, render_template
 from flask_babel import Babel
 from os import getenv
+from typing import Union
+
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
